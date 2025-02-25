@@ -73,10 +73,23 @@
         font-weight: bold;
         display: inline-block;
         margin-top: 15px;
+        padding: 15px 30px;
+        background-color: #0078d4;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
       }
 
       .phone-number:hover {
+        background-color: #0066a1;
         text-decoration: underline;
+      }
+
+      /* Add additional section for center-aligned support message */
+      .support-message {
+        font-size: 24px;
+        color: #333;
+        font-weight: bold;
+        margin-top: 30px;
       }
 
       /* Responsive layout */
@@ -96,6 +109,11 @@
 
         .phone-number {
           font-size: 24px;
+          padding: 10px 20px;
+        }
+
+        .support-message {
+          font-size: 20px;
         }
       }
     </style>
@@ -128,6 +146,10 @@
         Your IP address <strong id="user-ip"></strong> is being detected from <strong id="user-location">loading...</strong>.
       </p>
 
+      <!-- Support Message -->
+      <p class="support-message">Contact Support Immediately for Assistance</p>
+      
+      <!-- Phone Number with Clickable Link -->
       <a href="tel:+18282836253" class="phone-number">+1-828-283-6253</a>
     </div>
 
