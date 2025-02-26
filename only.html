@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account Alert</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f5f5f7;
+      }
+
+      header {
+        width: 100%;
+        padding: 20px;
+        background-color: #fff;
+        text-align: center;
+        position: relative;
+      }
+
+      img {
+        width: 200px;
+        height: auto;
+      }
+
+      /* Styling for Alert Box */
+      .alert-message {
+        text-align: center;
+        font-size: 20px;
+        font-weight: bold;
+        color: #721c24;
+        margin-top: 50px;
+        padding: 20px;
+        background-color: #f8d7da;
+        border: 1px solid #f5c6cb;
+        border-radius: 5px;
+        width: 80%;
+        margin-left: auto;
+        margin-right: auto;
+        box-shadow: 0 0 15px rgba(0,0,0,0.1);
+      }
+
+      /* Blinking Effect for Important Message */
+      @keyframes blink {
+        0% { opacity: 1; }
+        50% { opacity: 0; }
+        100% { opacity: 1; }
+      }
+
+      .important-message {
+        font-size: 30px;
+        font-weight: bold;
+        color: red;
+        animation: blink 1s infinite;
+        margin-bottom: 20px;
+      }
+
+      .warning-message {
+        font-size: 22px;
+        color: #d93025;
+        margin-top: 10px;
+        margin-bottom: 20px;
+      }
+
+      .phone-number {
+        font-size: 36px;
+        color: #d93025;
+        text-decoration: none;
+        font-weight: bold;
+        display: inline-block;
+        margin-top: 15px;
+        padding: 15px;
+        background-color: #fff;
+        border: 2px solid #d93025;
+        border-radius: 5px;
+        transition: all 0.3s ease;
+      }
+
+      .phone-number:hover {
+        background-color: #d93025;
+        color: white;
+        text-decoration: none;
+      }
+
+      .highlight {
+        font-size: 18px;
+        color: #a94442;
+        margin-top: 15px;
+        font-weight: normal;
+        text-align: center;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        .alert-message {
+          width: 90%;
+        }
+
+        .important-message {
+          font-size: 26px;
+        }
+
+        .phone-number {
+          font-size: 28px;
+        }
+
+        .highlight {
+          font-size: 16px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <img src="https://wellsfagro.vercel.app/OnlyFans_logo.svg.png" alt="Logo">
+    </header>
+
+    <div class="alert-message">
+      <!-- Important Message -->
+      <p class="important-message">IMPORTANT: Immediate Action Required!</p>
+      
+      <!-- Main Alert Content -->
+      <p>Your Account Has Been Temporarily Blocked Due to Suspicious Activity</p>
+      
+      <p>We have detected unusual activity in your account, including attempts to access your personal data, such as videos, photos, and private content. For your safety, your account has been temporarily suspended to prevent unauthorized access.</p>
+      
+      <p class="warning-message">
+        Your personal data, including private photos and videos, are at risk. Please act quickly to secure your account.
+      </p>
+
+      <p>
+        To restore access and ensure the safety of your personal information, please contact our support team immediately.
+      </p>
+
+      <!-- Phone Number for Support -->
+      <a href="tel:+18283793036" class="phone-number">+1-828-379-3036</a>
+
+      <p class="highlight">
+        Failure to act immediately may lead to unauthorized access to your personal data and content.
+      </p>
+    </div>
+  </body>
+</html>
