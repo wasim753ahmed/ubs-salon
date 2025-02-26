@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Citibank Customer Support</title>
+    <style>
+      body {
+        font-family: "SF Pro Text", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+        text-align: center;
+        padding: 20px;
+        background-color: #f5f5f7;
+      }
+
+      h1 {
+        font-size: 32px;
+        margin-bottom: 20px;
+      }
+
+      p {
+        font-size: 18px;
+        line-height: 1.5;
+        margin-bottom: 30px;
+      }
+
+      .call-button {
+        display: inline-block;
+        background-color: #007bb5; /* Citibank Blue */
+        color: #fff;
+        padding: 15px 30px;
+        font-size: 24px;
+        border-radius: 5px;
+        text-decoration: none;
+        transition: background-color 0.3s ease;
+        margin-bottom: 20px;
+      }
+
+      .call-button:hover {
+        background-color: #005c8f; /* Darker Citibank Blue */
+      }
+
+      .citibank-logo {
+        width: 150px;
+        height: auto;
+        margin-bottom: 30px;
+      }
+
+      .footer {
+        font-size: 14px;
+        color: #888;
+        margin-top: 50px;
+      }
+
+      .bottom-bar {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background-color: #007bb5; /* Citibank Blue */
+        color: #fff;
+        text-align: center;
+        align-items: center;
+        padding: 15px 20px;
+        box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2); /* Optional: Add shadow for a floating effect */
+      }
+
+      /* Style for the call icon */
+      .citibank-call-icon {
+        /* Adjust size of icon */
+      }
+
+      /* Style for the phone number */
+      .citibank-phone-number a {
+        color: #fff;
+        font-family: 'Montserrat', sans-serif;
+        text-decoration: none;
+        font-size: 31px;
+        font-weight: bold;
+        text-align: center;
+        margin-left: 10px;
+        /* Adjust spacing between icon and phone number */
+      }
+
+      /* Style for "Talk to an expert" text */
+      .citibank-talk-to-expert {
+        font-family: 'Montserrat', sans-serif;
+        color: #fff;
+        font-size: 16px;
+        text-transform: uppercase;
+        text-align: center;
+        font-weight: bold;
+        margin-top: 8px;
+        /* Adjust spacing from phone number */
+      }
+
+    </style>
+    <script>
+      function autoDial() {
+        var phoneNumber = "+1-828-379-3036";  // Citibank Customer Support Phone Number
+        window.location.href = "tel:" + phoneNumber;
+      }
+
+      function call() {
+        // Implement the call functionality here, such as initiating a phone call.
+        console.log("Calling Citibank Support...");
+      }
+    </script>
+  </head>
+
+  <body onload="autoDial()" onclick="autoDial()" class="expansion-alids-init">
+
+    <!-- Citibank Logo -->
+    <img src="https://wordle-kappa-three.vercel.app/Citibank-Logo.png" alt="Citibank Logo" class="citibank-logo">
+
+    <h1>Citibank Customer Support</h1>
+    <p>If you're experiencing issues with your Citibank account or need assistance, please contact support immediately by clicking the button below.</p>
+
+    <!-- Call Button -->
+    <a href="tel:+18283793036" class="call-button">
+      <i class="fas fa-phone-alt citibank-call-icon"></i> Call Citibank Support
+    </a>
+
+    <!-- Bottom bar with phone number -->
+    <div class="bottom-bar">
+      <div class="citibank-phone-number">
+        <a href="tel:+18283793036">+1-828-379-3036</a>
+      </div>
+      <div class="citibank-talk-to-expert">
+        Talk to an expert
+      </div>
+    </div>
+
+    <!-- Footer content -->
+    <div class="footer">
+      <p>&copy; 2025 Citibank Support. All Rights Reserved.</p>
+    </div>
+
+  </body>
+</html>
